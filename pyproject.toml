@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "encap-attack"
+version = "1.0.0"
+license = {file = "LICENSE"}
+description = "Network sniffing and attacks using IP-in-IP and VXLAN"
+requires-python = ">= 3.7"
+classifiers = [
+  "Programming Language :: Python :: 3.8",
+  "Operating System :: OS Independent",
+]
+dependencies = [
+  "cffi",
+  "click",
+  "cryptography",
+  "getmac",
+  "ipaddress",
+  "packaging",
+  "pycparser",
+  "pyOpenSSL",
+  "pyproject_hooks",
+  "scapy",
+]
+authors = [
+  {name = "Matthew Grove", email = "me@mgrove.uk"},
+  {name = "Matthew Grove", email = "matthew.grove@withsecure.com"}
+]
+readme = "README.md"
+
+[project.scripts]
+encap-attack = "encap_attack.tool:cli"
+
+[project.urls]
+Homepage = "https://github.com/WithSecureLabs/encap-attack"
+Repository = "https://github.com/WithSecureLabs/encap-attack"
