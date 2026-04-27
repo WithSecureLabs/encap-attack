@@ -185,6 +185,9 @@ class EncapsulationModel(ABC):
     def __submitDNS(self, dst_ip: str, qname: str, qtype: str, dst_port: int, src_port: int) -> dict[str, Union[str, int]]:
         """Send an encapsulated DNS request and return the response."""
         
+        if qtype == "PTR":
+            qname = ".".join(qname.split(".")[::-1]) + ".in-addr.arpa"
+
         packet = self._getPacketHeader() / IP(src = self._iface_ip, dst=dst_ip) / UDP(sport=src_port, dport=dst_port) / DNS(rd=1, qd=DNSQR(qname=qname,qtype=qtype))
         
         sniff = self._getAsyncSniffer(filter=f"udp and port {src_port}", count=1)

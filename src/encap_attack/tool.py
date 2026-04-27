@@ -140,7 +140,7 @@ def ipip_http(ctx, dst_port: int, http_request: str) -> None:
     ctx.obj["model"].sendHTTP(http_request, ctx.obj["dst_ip"], dst_port=dst_port, src_port=ctx.obj["src_port"])
 
 @ipip_request.command("dns")
-@click.option("-t", "--query-type", type=click.Choice(["SRV", "A", "AAAA", "CNAME"]), help="DNS record query type", required=True)
+@click.option("-t", "--query-type", type=click.Choice(["SRV", "A", "AAAA", "CNAME", "PTR"]), help="DNS record query type", required=True)
 @click.option("-pd", "--dst-port", type=int, help="Destination port [DEFAULT: 53]", default=53)
 @click.argument("query_name")
 @click.pass_context
@@ -211,7 +211,7 @@ def vxlan_http(ctx, dst_port: int, http_request: str) -> None:
     ctx.obj["model"].sendHTTP(http_request, ctx.obj["dst_ip"], dst_port=dst_port, src_port=ctx.obj["src_port"])
 
 @vxlan_request.command("dns")
-@click.option("-t", "--query-type", type=click.Choice(["SRV", "A", "AAAA", "CNAME"]), help="DNS record query type", required=True)
+@click.option("-t", "--query-type", type=click.Choice(["SRV", "A", "AAAA", "CNAME", "PTR"]), help="DNS record query type", required=True)
 @click.option("-pd", "--dst-port", type=int, help="Destination port [DEFAULT: 53]", default=53)
 @click.argument("query_name")
 @click.pass_context
