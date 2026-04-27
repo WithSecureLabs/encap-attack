@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "encap-attack"
-version = "1.0.0"
+version = "1.0.1"
 license = {file = "LICENSE"}
 description = "Network sniffing and attacks using IP-in-IP and VXLAN"
 requires-python = ">= 3.7"
